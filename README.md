@@ -1,82 +1,83 @@
----
-title: Laboratorio de Funcional
-author: Medina Alvaro - Soria Pedro - Teruel Belén
----
-La consigna del laboratorio está en https://tinyurl.com/funcional-2024-famaf
 
-# 1. Tareas
-Pueden usar esta checklist para indicar el avance.
+# Functional Laboratory
 
-## Verificación de que pueden hacer las cosas.
-- [ ] Haskell instalado y testeos provistos funcionando. (En Install.md están las instrucciones para instalar.)
+**Author**: Medina Alvaro - Soria Pedro - Teruel Belén
 
-## 1.1. Lenguaje
-- [ ] Módulo `Dibujo.hs` con el tipo `Dibujo` y combinadores. Puntos 1 a 3 de la consigna.
-- [ ] Definición de funciones (esquemas) para la manipulación de dibujos.
-- [ ] Módulo `Pred.hs`. Punto extra si definen predicados para transformaciones innecesarias (por ejemplo, espejar dos veces es la identidad).
+**Note**: In this README.md you will find: Homework, some theoretical questions about the Functional Paradigm and how to run the DSL to visualize the Escher image.
 
-## 1.2. Interpretación geométrica
-- [ ] Módulo `Interp.hs`.
+The instructions for this laboratory can be found in: https://tinyurl.com/funcional-2024-famaf
 
-## 1.3. Expresión artística (Utilizar el lenguaje)
-- [ ] El dibujo de `Dibujos/Feo.hs` se ve lindo.
-- [ ] Módulo `Dibujos/Grilla.hs`.
-- [ ] Módulo `Dibujos/Escher.hs`.
-- [ ] Listado de dibujos en `Main.hs`.
+# 1. Tasks
+
+## Verification that they can do things.
+- [X] Haskell installed and provided working tests (Install.md contains the installation instructions).
+
+## 1.1. Language
+- [X] Module `Drawing.hs` with type `Drawing` and combinators. Points 1 to 3 of the instructions.
+- [X] Definition of functions (schematics) for drawing manipulation.
+- [X] Module `Pred.hs`. Extra point if you define predicates for unnecessary transformations (for example, mirroring twice is the identity).
+
+## 1.2. Geometric Interpretation
+- [X] Module `Interp.hs`.
+
+## 1.3. Artistic expression (Use of language)
+- [X] Visualize the drawing of 'Drawing/Feo.hs'.
+- [X] Module `Dibujos/Grilla.hs`.
+- [X] Module `Dibujos/Escher.hs`.
+- [X] List of drawings in `Main.hs`.
 
 ## 1.4 Tests
-- [ ] Tests para `Dibujo.hs`.
-- [ ] Tests para `Pred.hs`.
+- [X] Tests for `Dibujo.hs`.
+- [X] Tests for `Pred.hs`.
 
 
-# 2. Experiencia
-A la hora de hacer el laboratorio en un principio, nos topamos con volver a entender como funciona Haskell, una vez que nos volvimos a familiarizar empezamos a desarrolar la sintaxis del lenguaje, para ver si las funciones andaban le pediamos a chatgpt que nos realize ejemplos y los probabamos. Para hacer la parte de pred utilizamos la misma metodologia. Luego para la interpretacion geometrica de las funciones en el modulo `Interp.hs` nos basamos en la semantica otorgada en la consigna.  Por ultimo para la programacion del modulo Escher, el aticulo de Peter Henderson recomendado y el archivo `Feo.hs` fueron de gran ayuda. Nos trabamos un poco en esta ultima parte, ya que los dibujos no nos quedaban bien pero lo solucionamos copiando literalmente las funciones del articulo.
-En cuanto al trabajo en grupo, pudimos organizarnos desde un principio. Para evitar inconvenientes, charlamos sobre el tiempo que cada uno le iba a dedicar al proyecto para así repartir las tareas de la forma más equitativamente posible.
+# 2. Experience
+At the time of doing the lab at first, we ran into the problem of re-understanding how Haskell works, once we got familiar again we started to develop the syntax of the language, to see if the functions worked we asked chatgpt to make us examples and we tested them. To do the pred part we used the same methodology. Then for the geometrical interpretation of the functions in the `Interp.hs` module we used the semantics given in the instruction.  Finally, for the programming of the Escher module, the recommended Peter Henderson article and the `Feo.hs` file were of great help. We got a bit stuck in this last part, since the drawings did not fit well, but we solved it by copying literally the functions of the article.
+As for the group work, we were able to organize ourselves from the beginning. To avoid problems, we talked about the time that each one of us was going to dedicate to the project in order to distribute the tasks as evenly as possible.
 
 
-# 3. Preguntas
-Al responder tranformar cada pregunta en una subsección para que sea más fácil de leer.
+# 3. Some questions
 
-1. ¿Por qué están separadas las funcionalidades en los módulos indicados? Explicar detalladamente la responsabilidad de cada módulo.
-2. ¿Por qué las figuras básicas no están incluidas en la definición del lenguaje, y en vez de eso, es un parámetro del tipo?
-3. ¿Qué ventaja tiene utilizar una función de `fold` sobre hacer pattern-matching directo?
-4. ¿Cuál es la diferencia entre los predicados definidos en Pred.hs y los tests?
+1. Why are the functionalities separated into the indicated modules? Please explain in detail the responsibility of each module.
+2. Why are the basic shapes not included in the language definition, and instead it is a parameter of the type?
+3. What is the advantage of using a `fold` function over direct pattern-matching?
+4. What is the difference between the predicates defined in Pred.hs and the tests?
 
 
-# Respuestas
+# Responses
 
-## Respuesta 1
-Las funcionalidades se encuentran separadas en disitintos modulos con el fin de diferenciar, la sintaxis de la semantica o su interpretacion, como tambien de la utlizacion de las mismas.
-En `Dibujos.hs` se define la sintaxis del lenguaje o DSL (Domain Specific Language) que hemos implementado, es decir en este modulo queda especificado què es lo que se puede escribir legalmente en este lenguaje y cuales son las funciones que podra utilizar el usuario.
-En `Interp.hs` se define la semantica o interpretacion del lenguaje, lo que hicimos fue utilizar la libreria gloss para la generacion de graficos, a su vez utilizamos el mòdulo Data.Point.Arithmetic que nos permite realizar operaciones aritmèticas entre vectores para poder implementar la semantica como esta definida en el enunciado del laboratorio. 
-Dentro de la carpeta Dibujos, se encuentran diferentes modulos en los que utilizamos el lenguaje para poder realizar los distintos dibujos solicitados. Cada modulo se encuentra representado por su configuracion, dada por su nombre, interpretacion y su tipo basico.
-Por ultimo el modulo `Main.hs` se encarga de la creación de la pantalla donde se proyecta el dibujo y de qué dibujo se va a proyectar, eligiendo las configuraciones deseadas(accesibles llamando a Main con el parámetro `lista`).
+## Answer 1
+The functionalities are separated in different modules in order to differentiate, the syntax of the semantics or its interpretation, as well as the use of them.
+In `Drawings.hs` is defined the syntax of the language or DSL (Domain Specific Language) that we have implemented, that is to say in this module is specified what can be legally written in this language and which are the functions that the user can use.
+In `Interp.hs` is defined the semantics or interpretation of the language, what we did was to use the gloss library for the generation of graphics, in turn we use the Data.Point.Arithmetic module that allows us to perform arithmetic operations between vectors to be able to implement the semantics as defined in the laboratory statement. 
+Inside the Drawings folder, there are different modules in which we use the language to be able to make the different drawings requested. Each module is represented by its configuration, given by its name, interpretation and its basic type.
+Finally the module `Main.hs` is in charge of the creation of the screen where the drawing is projected and which drawing is going to be projected, choosing the desired configurations (accessible by calling Main with the parameter `list`).
 
-## Respuesta 2
-Hacemos esto para tener una abstraccion y que el lenguaje sea mas flexible y reutilizable. De esta forma `Dibujo a` puede ser utilizado con cualquier tipo de figuras basicas (por ej, Pentagono, Hexagono, etc). 
-Esta tecnica es conocida como "programacion parametrica" y permite que el codigo sea agnostico al tipo de datos especifico con el que esta trabajando.
+## Answer 2
+We do this to have an abstraction and make the language more flexible and reusable. This way `Draw a` can be used with any type of basic shapes (e.g. Pentagon, Hexagon, etc). 
+This technique is known as `parametric programming` and allows the code to be agnostic to the specific data type it is working with.
 
-## Respuesta 3
-Cuando utilizamos pattern-matching directo, debemos escribir un patrón para cada posible caso en cambio `fold` proporciona una forma más general y flexible de procesar la estructura de datos.
-Por otro lado, en `fold` utilizamos una función que se aplica a cada elemento de la estructura de datos de manera sistemática. Esta función puede realizar cualquier tipo de operación en cada elemento.
-En resumen, utilizar una función de `fold` en lugar de hacer pattern-matching directo te brinda más flexibilidad, modularidad y control sobre cómo procesar una estructura de datos.
+## Answer 3
+When we use direct pattern-matching, we must write a pattern for each possible case instead `fold` provides a more general and flexible way of processing the data structure.
+On the other hand, in `fold` we use a function that is applied to each element of the data structure in a systematic way. This function can perform any type of operation on each element.
+In summary, using a `fold` function instead of doing direct pattern-matching gives you more flexibility, modularity and control over how to process a data structure.
 
-## Respuesta 4
-Tenemos que tener en cuenta que en el archivo `Pred.hs` definimos el tipo `Pred` y funciones operacionales para predicados, como `cambiar`,`anyDib`,`allDib`, entre otros.
+## Answer 4
+We have to keep in mind that in the `Pred.hs` file we define the `Pred` type and operational functions for predicates, such as `change`,`anyDib`,`allDib`, among others.
 
-* Sobre el tipo `Pred`: Es nuestro tipo para la definición de predicados.
-* Sobre las funciones operacionales: A través de predicados existentes podremos operar sobre ellos. Pej: Rotar todos los triangulos.
+* About the `Pred` type: It is our type for the definition of predicates.
+* On the operational functions: Through existing predicates we will be able to operate on them. Pej: Rotate all triangles.
 
-Por otro lado en `TestPred.hs`, archivo de testeo, se utilizan las funciones de Pred.hs para corroborar que funcionan correctamente. En efecto, `TestPred.hs` depende de `Pred.hs` pero cumplen roles distintos.
+On the other hand in `TestPred.hs`, test file, the functions of Pred.hs are used to corroborate that they work correctly. In effect, `TestPred.hs` depends on `Pred.hs` but they fulfill different roles.
 
-# 4. Ejecución
+# 4. Execution
 
 ## Main
-- Ejecución Inicial: `cabal run dibujos <dibujo>` (Optativo)
-- Ejecución con elección de dibujo: `cabal run dibujos lista`
+- Initial execution: `cabal run drawings <drawing>` (Optional)
+- Execution with choice of drawing: `cabal run drawings list`.
 
 ## Test
-- Test para `Dibujo.hs`: `cabal test dibujo`
-- Test para `Pred.hs`:   `cabal test predicados`
+- Test for `Drawing.hs`: `cabal test drawing`.
+- Test for `Pred.hs`: `cabal test predicates`.
 
 
