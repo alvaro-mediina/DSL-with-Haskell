@@ -1,8 +1,6 @@
 
 # Functional Laboratory
 
-**Author**: Medina Alvaro - Soria Pedro - Teruel Belén
-
 **Note**: In this README.md you will find: Tasks, some theoretical questions about the Functional Paradigm and how to run the DSL to visualize the Escher image.
 
 The instructions for this laboratory can be found in: https://tinyurl.com/funcional-2024-famaf
